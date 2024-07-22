@@ -1,34 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { Container, Button, Form } from 'react-bootstrap';
 
-const Container = styled.div`
-  font-family: Arial, sans-serif;
-  text-align: left;
-  padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-const Button=styled.button`
-
-
-`;
-const Label = styled.label`
-  display: block;
-  margin-left:50px;
-
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-`;
-const GeneralInfo = ({ data, onChange}) => {
+const GeneralInfo = ({ data, onChange }) => {
   const [editing, setEditing] = useState(false);
   const { name, email, phone } = data;
 
@@ -36,47 +9,51 @@ const GeneralInfo = ({ data, onChange}) => {
   const handleSave = () => setEditing(false);
 
   return (
-    
-    <div>
-      
-      <Label>Informacje Ogólne</Label>
+    <Container className="mt-4 p-4 bg-light rounded shadow">
+      <h2 className="mb-4">Informacje Ogólne</h2>
       {editing ? (
-        <div>
-          <Input
-            type="text"
-            name="name"
-            value={name}
-            onChange={onChange}
-            placeholder="Imię i nazwisko"
-          />
-          <Input
-            type="email"
-            name="email"
-            value={email}
-            onChange={onChange}
-            placeholder="Email"
-          />
-          <Input
-            type="text"
-            name="phone"
-            value={phone}
-            onChange={onChange}
-            placeholder="Telefon"
-          />
-          <button onClick={handleSave}>Zapisz</button>
-          
-        </div>
-        
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Label>Imię i nazwisko</Form.Label>
+            <Form.Control
+              type="text"
+              name="name"
+              value={name}
+              onChange={onChange}
+              placeholder="Imię i nazwisko"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              placeholder="Email"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Telefon</Form.Label>
+            <Form.Control
+              type="text"
+              name="phone"
+              value={phone}
+              onChange={onChange}
+              placeholder="Telefon"
+            />
+          </Form.Group>
+          <Button variant="primary" onClick={handleSave}>Zapisz</Button>
+        </Form>
       ) : (
         <div>
-          <p>Imię: {name}</p>
-          <p>Email: {email}</p>
-          <p>Telefon: {phone}</p>
-          <button onClick={handleEdit}>Edytuj</button>
-          
+          <p><strong>Imię i nazwisko:</strong> {name}</p>
+          <p><strong>Email:</strong> {email}</p>
+          <p><strong>Telefon:</strong> {phone}</p>
+          <Button variant="secondary" onClick={handleEdit}>Edytuj</Button>
         </div>
       )}
-    </div>
+    </Container>
   );
 };
 

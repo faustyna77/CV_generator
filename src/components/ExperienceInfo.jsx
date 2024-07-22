@@ -1,56 +1,5 @@
-
-/*
-const ExperienceInfo = ({ data, onChange }) => {
-  const [editing, setEditing] = useState(false);
-  const { position, responsibilities, duration } = data;
-
-  const handleEdit = () => setEditing(true);
-  const handleSave = () => setEditing(false);
-
-  return (
-    <div>
-      <h2>Informacje o doświadczeniu</h2>
-      {editing ? (
-        <div>
-          <textarea
-            type="text"
-            name="position"
-            value={position}
-            onChange={onChange}
-            placeholder="Stanowisko"
-          />
-          <textarea
-            type="text"
-            name="responsibilities"
-            value={responsibilities}
-            onChange={onChange}
-            placeholder="Obowiązki"
-          />
-          <textarea
-            type="text"
-            name="duration"
-            value={duration}
-            onChange={onChange}
-            placeholder="Okres zatrudnienia"
-          />
-          <button onClick={handleSave}>Zapisz</button>
-        </div>
-      ) : (
-        <div>
-          <p>Stanowisko: {position}</p>
-          <p>Obowiązki: {responsibilities}</p>
-          <p>Okres zatrudnienia: {duration}</p>
-          <button onClick={handleEdit}>Edytuj</button>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default ExperienceInfo;
-*/
-
 import React, { useState } from 'react';
+import { Button, Form, Card, Container } from 'react-bootstrap';
 
 const ExperienceInfo = ({ data, onChange, onAdd }) => {
   const handleChange = (index, e) => {
@@ -67,46 +16,58 @@ const ExperienceInfo = ({ data, onChange, onAdd }) => {
   const handleSave = () => setEditing(false);
 
   return (
-    <div>
-      <h2>Informacje o Doświadczeniu</h2>
+    <Container className="mt-4">
+      <h2 className="mb-4">Informacje o Doświadczeniu</h2>
       {data.map((experience, index) => (
-        <div key={index}>
-          {editing ? (
-            <div>
-              <input
-                type="text"
-                name="position"
-                value={experience.position}
-                onChange={(e) => handleChange(index, e)}
-                placeholder="Nazwa stanowiska"
-              />
-              <input
-                type="text"
-                name="responsibilities"
-                value={experience.responsibilities}
-                onChange={(e) => handleChange(index, e)}
-                placeholder="Obowiązki"
-              />
-              <input
-                type="text"
-                name="duration"
-                value={experience.duration}
-                onChange={(e) => handleChange(index, e)}
-                placeholder="Okres zatrudnienia"
-              />
-            </div>
-          ) : (
-            <div>
-              <p>Nazwa stanowiska: {experience.position}</p>
-              <p>Obowiązki: {experience.responsibilities}</p>
-              <p>Okres zatrudnienia: {experience.duration}</p>
-            </div>
-          )}
-        </div>
+        <Card key={index} className="mb-3">
+          <Card.Body>
+            {editing ? (
+              <Form>
+                <Form.Group className="mb-3">
+                  <Form.Label>Nazwa stanowiska</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="position"
+                    value={experience.position}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Nazwa stanowiska"
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Obowiązki</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="responsibilities"
+                    value={experience.responsibilities}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Obowiązki"
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Okres zatrudnienia</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="duration"
+                    value={experience.duration}
+                    onChange={(e) => handleChange(index, e)}
+                    placeholder="Okres zatrudnienia"
+                  />
+                </Form.Group>
+                <Button variant="primary" onClick={handleSave}>Zapisz</Button>
+              </Form>
+            ) : (
+              <div>
+                <p><strong>Nazwa stanowiska:</strong> {experience.position}</p>
+                <p><strong>Obowiązki:</strong> {experience.responsibilities}</p>
+                <p><strong>Okres zatrudnienia:</strong> {experience.duration}</p>
+                <Button variant="secondary" onClick={handleEdit}>Edytuj</Button>
+              </div>
+            )}
+          </Card.Body>
+        </Card>
       ))}
-      <button onClick={handleEdit}>{editing ? 'Zapisz' : 'Edytuj'}</button>
-      {editing && <button onClick={onAdd}>Dodaj Doświadczenie</button>}
-    </div>
+      {editing && <Button variant="success" onClick={onAdd}>Dodaj Doświadczenie</Button>}
+    </Container>
   );
 };
 
