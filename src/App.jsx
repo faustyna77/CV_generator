@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import GeneralInfo from './components/GeneralInfo';
 import SchoolInfo from './components/SchoolInfo';
@@ -61,9 +60,7 @@ function App() {
     setGeneralInfo({ ...generalInfo, [name]: value });
   };
 
-  const handleSchoolChange = (index, field, value) => {
-    const updatedSchools = [...schools];
-    updatedSchools[index][field] = value;
+  const handleSchoolChange = (updatedSchools) => {
     setSchools(updatedSchools);
   };
 
@@ -71,9 +68,7 @@ function App() {
     setSchools([...schools, { school_name: '', school_course: '', school_graduation_year: '' }]);
   };
 
-  const handleExperienceChange = (index, field, value) => {
-    const updatedExperience = [...experience];
-    updatedExperience[index][field] = value;
+  const handleExperienceChange = (updatedExperience) => {
     setExperience(updatedExperience);
   };
 
