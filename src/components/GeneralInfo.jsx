@@ -49,7 +49,7 @@ const GeneralInfo = ({ data, onChange }) => {
         <div>
           <p><strong>Imię i nazwisko:</strong> {name}</p>
           <p><strong>Email:</strong> {email}</p>
-          <p><strong>Telefon:</strong> {phone}</p>
+          <p><strong>Telefon123:</strong> {phone}</p>
           <Button variant="secondary" onClick={handleEdit}>Edytuj</Button>
         </div>
       )}

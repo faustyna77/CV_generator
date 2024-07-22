@@ -111,17 +111,17 @@ function App() {
           doc.addPage(); // Dodaj nową stronę
           y = 20; // Resetowanie pozycji Y
         }
-        doc.text(`School ${index + 1}`, 10, y);
+        doc.text(`Szkoła ${index + 1}`, 10, y);
         y += 10;
-        doc.text(`Name: ${school.school_name}`, 10, y);
+        doc.text(`Nazwa: ${school.school_name}`, 10, y);
         y += 10;
-        doc.text(`Course: ${school.school_course}`, 10, y);
+        doc.text(`Kierunek: ${school.school_course}`, 10, y);
         y += 10;
         doc.text(`Graduation Year: ${school.school_graduation_year}`, 10, y);
         y += 20;
       });
       
-      doc.text('Experience Information', 10, y);
+      doc.text('Informacje o doświadczeniu', 10, y);
       y += 10;
       
       experience.forEach((exp, index) => {
