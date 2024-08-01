@@ -22,7 +22,8 @@ const AIGenerator = () => {
         , ${experience.map(exp => `${exp.position } - ${exp.responsibilities }, ${exp.duration }`).join('; ')}`
        
 
-        const apiKey = '13a3075b408a4b06847d6e016c6816d1'; // Upewnij się, że używasz poprawnego klucza API
+        const apiKey = process.env.OPENAI_API_KEY
+       // Upewnij się, że używasz poprawnego klucza API
         const endpoint = 'https://openaichatggg.openai.azure.com/openai/deployments/openaichatggg/completions?api-version=2023-09-15-preview';
 
         try {
